@@ -1,0 +1,92 @@
+
+Machine learning algorithms fall into two broad categories:
+1) Supervised Learning (using historical data to predict the future)
+    Examples:
+    - What will house prices look like for the next 12 months?
+    - How can I flag suspicious emails as spam?
+    Regression Common Algorithms: (Regression used to predict numeric targets)
+    - Linear Regression:
+    - Regularized Regression:
+    - Time Series:
+    Classification Common Algorithms: (Classification used to predict categories)
+    - KNN:
+    - Logistic Regression:
+    - Tree-Based Models:
+    - Naive Bayes (NLP):
+2) Unsupervised Learning (Finding patterns and relationships in data)
+    Examples:
+    - How can I segment my customers?
+    - Which TV shows should I recommend to each user?
+    Common Algorithms:
+    - K-Means Clustering
+    - Hierarchical Clustering
+    - Anomaly Detection
+    - Matrix Factorization
+    - Principal Components Analysis
+    - Recommender Systems
+    - Topic Modeling (NLP)
+3) Reinforcement Learning
+Commonly used in robotics and gaming.
+
+Fields like deep learning and natural language processing utilize both supervised and unsupervised learning techniques.
+
+===================================DATA SCIENCE===================================================
+Data science is about using data to make smart decissions.
+Workflow:
+Scoping the project > gather data > clean and explore data > applying models > sharing insights with end users.
+
+
+===================================Regression===================================================
+Supervised learning technique used to predict a numeric variable (target) by modeling its relationship with a set of other variables (features)
+Target: Refered as 'Y'
+        - This is the variable you're trying to predict.
+        - The target is also known as "Y", "model output", "response", or "dependent" variable.
+        - Regression helps understand how the target variable is impacted by the features.
+Features: Refered as "X"
+        - These are the variables that help you predict the target variable.
+        - Features are also known as "X", "model inputs", "predictors", or "independent" variables.
+        - Regression helps understand how the features impact, or predict, the target.
+
+Regression models are used for two primary goals: prediction and inference. (inference used to understand the relationships between features and target)
+
+These are some of the major types of regression modeling techniques:
+1) Linear Regression: Models the relationship between the features & target using a linear equation.
+2) Regularized Regression: An extension of linear regression that penalizes model complexity.
+3) Time-Series Forecasting: Predicts future data using historical trends & seasonality.
+4) Tree-Based Regression: Splits data by maximizing the difference between groups.
+
+Logistic regression: (It's actually a classification modeling technique even if it has a "regression" in its name)
+
+
+Regression Workflow:
+In the modeling data step in the DS workflow
+1) Preparing for modeling: Get data ready to be input into a ML algorithm.
+    - Single table, non-null.
+    - Feature engineering.
+    - Data splitting.
+2) Applying Algorithms: Build regression models from training data.
+    - Linear Regression
+    - Regularized Regression
+    - Time Series
+3) Model Evaluation: Evaluate model fit on training & validation data.
+    - R-squared & MAE
+    - Checking Assumptions
+    - Validation Performance
+4) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
