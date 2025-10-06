@@ -72,10 +72,20 @@ In the modeling data step in the DS workflow
     - R-squared & MAE
     - Checking Assumptions
     - Validation Performance
-4) 
 
+=================================================== Simple Linear Regression ===================================================
+Simple Linear Regression models use a single feature to predict the target.
+- This is archieved by fitting a line through the data points in a scatterplot (like an lmplot).
 
-
+These python libraries are used tto fit regression models:
+1) statsmodels: Ideal if your goal is inference
+    - Similar output to other tools (SAS, R, Excel)
+    - Easy access to dozens of statistical tests.
+    - Harder to leverage in production ML.
+2) scikit-learn: Ideal if your goal is prediction.
+    - Most popular ML library in Python.
+    - Has various models for easy comparison.
+    - Designed to be deployed to production.
 
 
 
