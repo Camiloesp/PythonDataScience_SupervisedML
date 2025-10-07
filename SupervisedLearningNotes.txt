@@ -90,6 +90,10 @@ These python libraries are used tto fit regression models:
 
 
 
+R-Squared (Coefficient of determination): Measures how much better the model is at predicting the target than using its mean (our best guess without using features)
+    - R-square values are bounded between 0 and 1 on training data.
+Hypothesis Test: Indicate whether our model is signigicantly better at predicting our target than using the mean of the target as the model.
+    - In other words, you are trying to find significant evidence that your model isn't useless.
 
 
 
