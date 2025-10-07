@@ -87,7 +87,61 @@ These python libraries are used tto fit regression models:
     - Has various models for easy comparison.
     - Designed to be deployed to production.
 
+===========================================================================================================================================
+### Explination of what the model.summary() returns.
 
+you’re looking at the output of a linear regression model summary from statsmodels. This is basically a statistical autopsy of how well your chosen feature(s)—in this case, age—predict the target variable charges (medical insurance cost). Let’s unpack the important pieces from the screenshot:  
+
+---
+
+**Top Section: General Model Info**  
+* **Dep. Variable: charges** The dependent variable (the thing we’re trying to predict) is charges.
+* **Model: OLS** OLS = Ordinary Least Squares regression, the standard linear regression method.
+* **Method: Least Squares** Confirms that coefficients were estimated by minimizing squared errors.
+* **No. Observations: 1338** Number of data points (rows).
+* **Df Residuals: 1336** Degrees of freedom left after estimating parameters. (Total data – estimated parameters).
+* **Df Model: 1** Number of predictors (just age in this case).
+
+---
+
+**Fit Statistics**
+* **R-squared: 0.089** About 8.9% of the variation in charges is explained by age. This is very low, meaning age alone isn’t a strong predictor of insurance charges.
+* **Adj. R-squared: 0.089** Adjusted for the number of predictors (same here since only one predictor).
+* **F-statistic: 131.2 & Prob (F-statistic): 4.89e-29** Tests if your model as a whole is meaningful. Very small p-value (<0.05) → age is statistically significant.
+
+---
+
+**Coefficients Table**
+This is the meat of the regression.  
+
+|  Term | coef | std err | t | P>|t| | [0.025 | 0.975] |  
+|-------|------|---------|---|-------|--------|--------|  
+| const | 3165.8850 | 937.149 | 3.378 | 0.001 | 1327.440 | 5004.330 |  
+| age | 257.7226 | 22.502 | 11.453 | 0.000 | 213.579 | 301.866 |  
+
+* **const (3165.8850):** This is the intercept. If age = 0, predicted charges ≈ $3165.
+* **age (257.7226):** Each additional year of age increases insurance charges by about $257 on average, holding everything else constant.
+* **P>|t|:** p-value. Very small (<0.05), meaning the coefficients are statistically significant.
+* **[0.025, 0.975]:** Confidence interval for the coefficient. For age, the true value is very likely between 213.6 and 301.9.
+
+---
+
+**Diagnostics**  
+* **Omnibus, Prob(Omnibus), Jarque-Bera, Skew, Kurtosis:** These test whether residuals (errors) are normally distributed. Here, p-values are basically zero → residuals are not normal, suggesting model misfit.
+* **Durbin-Watson: 2.033:** Tests for autocorrelation in residuals. ~2 means no serious autocorrelation (good).
+* **Cond. No: 124:** Tests multicollinearity (predictors being too correlated). Low number = no issue here.
+
+---
+
+**TL;DR**  
+* Age is statistically significant in predicting insurance charges.
+* For every extra year, charges increase by about **$258.**
+* But **age explains only ~9% of the variance.** That’s weak. Other factors (like smoker status, BMI, region) probably matter much more.
+
+---
+
+Think of this as: age matters, but it’s not the whole story—smoking might blow the prediction wide open.
+===========================================================================================================================================
 
 
 R-Squared (Coefficient of determination): Measures how much better the model is at predicting the target than using its mean (our best guess without using features)
@@ -96,6 +150,13 @@ Hypothesis Test: Indicate whether our model is signigicantly better at predictin
     - In other words, you are trying to find significant evidence that your model isn't useless.
 
 
+Assumptions of Linear Regression that can be violated, leading to unrealiable predictions and interpretations
+L.I.N.N.E.
+Linearity: assumes there's a linear relationship between the target and each feature.
+Independence of errors: assumes that residuals in your model have no patterns or relationships between them (they aren't autocorrelated).S
+Normality of errors: assumes the residuals are approximately normally distributed.
+No perfect multicollinearity: 
+Equal variance of errors: 
 
 
 
