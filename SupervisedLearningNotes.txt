@@ -155,8 +155,8 @@ L.I.N.N.E.
 Linearity: assumes there's a linear relationship between the target and each feature.
 Independence of errors: assumes that residuals in your model have no patterns or relationships between them (they aren't autocorrelated).S
 Normality of errors: assumes the residuals are approximately normally distributed.
-No perfect multicollinearity: 
-Equal variance of errors: 
+No perfect multicollinearity: assumes that features aren't perfectly correlated with each other, as that would lead to unreliable and illogical model coefficients.
+Equal variance of errors: assumes the residuals are consistent across predictions.
 
 
 
