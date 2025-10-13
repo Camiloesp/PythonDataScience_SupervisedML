@@ -1,0 +1,263 @@
+
+Machine learning algorithms fall into two broad categories:
+1) Supervised Learning (using historical data to predict the future)
+    Examples:
+    - What will house prices look like for the next 12 months?
+    - How can I flag suspicious emails as spam?
+    Regression Common Algorithms: (Regression used to predict numeric targets)
+    - Linear Regression:
+    - Regularized Regression:
+    - Time Series:
+    Classification Common Algorithms: (Classification used to predict categories)
+    - KNN:
+    - Logistic Regression:
+    - Tree-Based Models:
+    - Naive Bayes (NLP):
+2) Unsupervised Learning (Finding patterns and relationships in data)
+    Examples:
+    - How can I segment my customers?
+    - Which TV shows should I recommend to each user?
+    Common Algorithms:
+    - K-Means Clustering
+    - Hierarchical Clustering
+    - Anomaly Detection
+    - Matrix Factorization
+    - Principal Components Analysis
+    - Recommender Systems
+    - Topic Modeling (NLP)
+3) Reinforcement Learning
+Commonly used in robotics and gaming.
+
+Fields like deep learning and natural language processing utilize both supervised and unsupervised learning techniques.
+
+===================================DATA SCIENCE===================================================
+Data science is about using data to make smart decissions.
+Workflow:
+Scoping the project > gather data > clean and explore data > applying models > sharing insights with end users.
+
+
+===================================Regression=================================================== ***************************
+Supervised learning technique used to predict a numeric variable (target) by modeling its relationship with a set of other variables (features)
+Target: Refered as 'Y'
+        - This is the variable you're trying to predict.
+        - The target is also known as "Y", "model output", "response", or "dependent" variable.
+        - Regression helps understand how the target variable is impacted by the features.
+Features: Refered as "X"
+        - These are the variables that help you predict the target variable.
+        - Features are also known as "X", "model inputs", "predictors", or "independent" variables.
+        - Regression helps understand how the features impact, or predict, the target.
+
+Regression models are used for two primary goals: prediction and inference. (inference used to understand the relationships between features and target)
+
+These are some of the major types of regression modeling techniques:
+1) Linear Regression: Models the relationship between the features & target using a linear equation.
+2) Regularized Regression: An extension of linear regression that penalizes model complexity.
+3) Time-Series Forecasting: Predicts future data using historical trends & seasonality.
+4) Tree-Based Regression: Splits data by maximizing the difference between groups.
+
+Logistic regression: (It's actually a classification modeling technique even if it has a "regression" in its name)
+
+
+Regression Workflow:
+In the modeling data step in the DS workflow
+1) Preparing for modeling: Get data ready to be input into a ML algorithm.
+    - Single table, non-null.
+    - Feature engineering.
+    - Data splitting.
+2) Applying Algorithms: Build regression models from training data.
+    - Linear Regression
+    - Regularized Regression
+    - Time Series
+3) Model Evaluation: Evaluate model fit on training & validation data.
+    - R-squared & MAE
+    - Checking Assumptions
+    - Validation Performance
+
+=================================================== Simple Linear Regression ===================================================
+Simple Linear Regression models use a single feature to predict the target.
+- This is archieved by fitting a line through the data points in a scatterplot (like an lmplot).
+
+These python libraries are used tto fit regression models:
+1) statsmodels: Ideal if your goal is inference
+    - Similar output to other tools (SAS, R, Excel)
+    - Easy access to dozens of statistical tests.
+    - Harder to leverage in production ML.
+2) scikit-learn: Ideal if your goal is prediction.
+    - Most popular ML library in Python.
+    - Has various models for easy comparison.
+    - Designed to be deployed to production.
+
+===========================================================================================================================================
+### Explination of what the model.summary() returns.
+
+you’re looking at the output of a linear regression model summary from statsmodels. This is basically a statistical autopsy of how well your chosen feature(s)—in this case, age—predict the target variable charges (medical insurance cost). Let’s unpack the important pieces from the screenshot:  
+
+---
+
+**Top Section: General Model Info**  
+* **Dep. Variable: charges** The dependent variable (the thing we’re trying to predict) is charges.
+* **Model: OLS** OLS = Ordinary Least Squares regression, the standard linear regression method.
+* **Method: Least Squares** Confirms that coefficients were estimated by minimizing squared errors.
+* **No. Observations: 1338** Number of data points (rows).
+* **Df Residuals: 1336** Degrees of freedom left after estimating parameters. (Total data – estimated parameters).
+* **Df Model: 1** Number of predictors (just age in this case).
+
+---
+
+**Fit Statistics**
+* **R-squared: 0.089** About 8.9% of the variation in charges is explained by age. This is very low, meaning age alone isn’t a strong predictor of insurance charges.
+* **Adj. R-squared: 0.089** Adjusted for the number of predictors (same here since only one predictor).
+* **F-statistic: 131.2 & Prob (F-statistic): 4.89e-29** Tests if your model as a whole is meaningful. Very small p-value (<0.05) → age is statistically significant.
+
+---
+
+**Coefficients Table**
+This is the meat of the regression.  
+
+|  Term | coef | std err | t | P>|t| | [0.025 | 0.975] |  
+|-------|------|---------|---|-------|--------|--------|  
+| const | 3165.8850 | 937.149 | 3.378 | 0.001 | 1327.440 | 5004.330 |  
+| age | 257.7226 | 22.502 | 11.453 | 0.000 | 213.579 | 301.866 |  
+
+* **const (3165.8850):** This is the intercept. If age = 0, predicted charges ≈ $3165.
+* **age (257.7226):** Each additional year of age increases insurance charges by about $257 on average, holding everything else constant.
+* **P>|t|:** p-value. Very small (<0.05), meaning the coefficients are statistically significant.
+* **[0.025, 0.975]:** Confidence interval for the coefficient. For age, the true value is very likely between 213.6 and 301.9.
+
+---
+
+**Diagnostics**  
+* **Omnibus, Prob(Omnibus), Jarque-Bera, Skew, Kurtosis:** These test whether residuals (errors) are normally distributed. Here, p-values are basically zero → residuals are not normal, suggesting model misfit.
+* **Durbin-Watson: 2.033:** Tests for autocorrelation in residuals. ~2 means no serious autocorrelation (good).
+* **Cond. No: 124:** Tests multicollinearity (predictors being too correlated). Low number = no issue here.
+
+---
+
+**TL;DR**  
+* Age is statistically significant in predicting insurance charges.
+* For every extra year, charges increase by about **$258.**
+* But **age explains only ~9% of the variance.** That’s weak. Other factors (like smoker status, BMI, region) probably matter much more.
+
+---
+
+Think of this as: age matters, but it’s not the whole story—smoking might blow the prediction wide open.
+===========================================================================================================================================
+
+
+R-Squared (Coefficient of determination): Measures how much better the model is at predicting the target than using its mean (our best guess without using features)
+    - R-square values are bounded between 0 and 1 on training data.
+Hypothesis Test: Indicate whether our model is signigicantly better at predicting our target than using the mean of the target as the model.
+    - In other words, you are trying to find significant evidence that your model isn't useless.
+
+
+Assumptions of Linear Regression that can be violated, leading to unrealiable predictions and interpretations
+L.I.N.N.E.
+Linearity: assumes there's a linear relationship between the target and each feature.
+Independence of errors: assumes that residuals in your model have no patterns or relationships between them (they aren't autocorrelated).S
+Normality of errors: assumes the residuals are approximately normally distributed.
+No perfect multicollinearity: assumes that features aren't perfectly correlated with each other, as that would lead to unreliable and illogical model coefficients.
+Equal variance of errors: assumes the residuals are consistent across predictions.
+
+
+===================================Classification=================================================== ***************************
+Classification modeling is a supervised learning technique used to predict a categorical variable (target) by modeling its relationship with other variables (features)
+
+Classification models can be used to predict categorical outcomes like which customers are most likely to purchase a product, whetewhether a transaction is fraudulent, or if a review is positive, negative, or neutral.
+
+Target "Y": Variable we are trying to predict
+    - Target is known as "Y", "model output", "response", or "dependent" variable.
+    - Classification helps understand how the target variable is impacted by the features.
+Features "X": These are variables that help you predict the target variable
+    - Features are also known as "X", "model inputs", "predictors", or "independent" variables.
+    - Classification helps understand how the features impact, or predict, the target.
+
+Goals of Classication:
+- Prediction: Used to predict the target as accuratly as possible.
+    Example: What is the probability a customer will purchase based on what we know about them?
+- Inference: Used to understand the relationships between the features and target.
+    Example: How much does a customer's income impact likelihood to purchase?
+
+Types of Classification:
+- K-Nearest Neighbors: Classifies observations based on characteristics of nearby points.
+- Logistic Regression: Predicts the probability that a datapoint is a given class.
+- Decision Trees: Splits data by maximizing the difference between groups.
+- Ensemble Methods: Uses the outputs of multiple models to improve accuracy.
+
+"All models are wrong, but some are useful"
+- George Box
+
+Modeling Workflow:
+1) Preparing for Modeling: Get your data ready for input into an ML model.
+    - Single table, non-null.
+    - Feature engineering.
+    - Imbalanced Techniques.
+    - Data splitting.
+2) Applying Algorithms: Build classification models from training data.
+    - KNN: is a classification technique designed to predict outcomes based on similar observed values.
+    - Logistic Regression.
+    - Decision Trees.
+    - Ensemble Methods.
+3) Model Evaluation: Evaluate model fit on training & validation data.
+    - Accuracy, Precision, F1.
+    - Confusion Matrix.
+    - Validation Performance.
+4) Model Selection: Pick the best model to deploy and identify insights.
+    - Test performance.
+    - Interpretability.
+    - Scoring Speed.
+
+
+
+KNN (K-Nearest Neighbors) Workflow:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
