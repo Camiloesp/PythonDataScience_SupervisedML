@@ -194,9 +194,9 @@ Modeling Workflow:
     - Data splitting.
 2) Applying Algorithms: Build classification models from training data.
     - KNN: is a classification technique designed to predict outcomes based on similar observed values.
-    - Logistic Regression.
-    - Decision Trees.
-    - Ensemble Methods.
+    - Logistic Regression: is a classification technique used to pradict the probability of a binary (true/false) outcome.
+    - Decision Trees:
+    - Ensemble Methods:
 3) Model Evaluation: Evaluate model fit on training & validation data.
     - Accuracy, Precision, F1.
     - Confusion Matrix.
@@ -207,8 +207,6 @@ Modeling Workflow:
     - Scoring Speed.
 
 
-
-KNN (K-Nearest Neighbors) Workflow:
 
 
 
