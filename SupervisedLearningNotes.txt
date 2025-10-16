@@ -196,7 +196,7 @@ Modeling Workflow:
     - KNN: is a classification technique designed to predict outcomes based on similar observed values.
     - Logistic Regression: is a classification technique used to pradict the probability of a binary (true/false) outcome.
     - Decision Trees: they use series of binary (true/false) rules to predict multi-class or binary outcomes.
-    - Ensemble Methods:
+    - Ensemble Methods: they use the outputs of multiple models to make predictions.
 3) Model Evaluation: Evaluate model fit on training & validation data.
     - Accuracy, Precision, F1.
     - Confusion Matrix.
